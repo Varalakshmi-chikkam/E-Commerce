@@ -9,3 +9,12 @@ class Product(models.Model):
     image=models.ImageField(upload_to='img')
     desc=models.TextField()
     price=models.IntegerField()
+
+
+    #static method
+    @staticmethod
+    def get_category_id(get_id):
+        if get_id:
+            return Product.objects.filter(category=get_id)
+        else:
+            return Product.objects.all()
